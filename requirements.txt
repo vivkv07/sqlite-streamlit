@@ -1,5 +1,5 @@
 sqlite3
 pandas
 pathlib
-streamlit_ace
-streamlit_toggle
+streamlit-ace
+streamlit-toggle
