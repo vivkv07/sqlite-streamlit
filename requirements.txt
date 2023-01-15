@@ -2,4 +2,4 @@ sqlite3
 pandas
 pathlib
 streamlit-ace
-streamlit-toggle
+streamlit-toggle-switch
