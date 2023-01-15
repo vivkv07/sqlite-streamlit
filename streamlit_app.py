@@ -48,11 +48,20 @@ def main():
 
         db_filename = st.text_input("Database Name")
         create_db = st.button('Create Database')
-
+        
+        conn = create_connection('default.db')
+        mycur = conn.cursor() 
+        mycur.execute("PRAGMA database_list;")
+        available_table=(mycur.fetchall())
+        with st.expander("Available Databases"): st.write(pd.DataFrame(available_table))
         if create_db:
+            
+            
             if db_filename.endswith('.db'):
                 conn = create_connection(db_filename)
-                st.write(conn) # success message?
+                
+
+                st.success("New Database has been Created! Please move on to next tab for loading data into Table.")
             else: 
                 st.error('Database name must end with .db as we are using sqlite in the background to create files.')
 
@@ -85,7 +94,11 @@ def main():
     with qry:
         sqlite_dbs = [file for file in os.listdir('.') if file.endswith('.db')]
         db_filename = st.selectbox('DB Filename', sqlite_dbs)
-        
+        conn = create_connection(db_filename)
+        mycur = conn.cursor() 
+        mycur.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;")
+        available_table=(mycur.fetchall())
+        st.write(pd.DataFrame(available_table))
         with readme("streamlit-ace"):
             c1, c2 = st.columns([3, 0.5])
 
