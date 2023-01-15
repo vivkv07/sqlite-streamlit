@@ -1,4 +1,4 @@
-sqlite3
+pysqlite3
 pandas
 pathlib
 streamlit-ace
