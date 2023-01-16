@@ -13,7 +13,7 @@ st.set_page_config(layout='wide', page_title="Sql Editor", page_icon= "./data/sq
 st.title(" Just enough SQL to get started with Analysis! ")
 st.caption(" Developer - Vivek Kovvuru")
 st.markdown('''[![Streamlit App](https://badgen.net/pypi/v/streamlit)](https://pypi.org/project/streamlit/)
-                [![Github Link](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/vivkv07/streamlit-pandas-profiling)
+                [![Github Link](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/vivkv07/sqlite-streamlit.git)
             [![BymeaCoffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label)](https://www.buymeacoffee.com/vivekkovvuru)''')
 st.write("")
 st.write("")
@@ -42,8 +42,8 @@ def main():
     def create_database():
         st.markdown("# Create Database")
 
-        st.write("""A database in SQLite is just a file on same server. 
-        By convention their names always end in .db""")
+        st.info("""A database in SQLite is just a file on same server. 
+        By convention their names always must end in .db""")
 
 
         db_filename = st.text_input("Database Name")
@@ -54,6 +54,7 @@ def main():
         mycur.execute("PRAGMA database_list;")
         available_table=(mycur.fetchall())
         with st.expander("Available Databases"): st.write(pd.DataFrame(available_table))
+        
         if create_db:
             
             
@@ -98,7 +99,8 @@ def main():
         mycur = conn.cursor() 
         mycur.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;")
         available_table=(mycur.fetchall())
-        st.write(pd.DataFrame(available_table))
+        st.write("Available Tables")
+        st.dataframe(pd.DataFrame(available_table))
         with readme("streamlit-ace"):
             c1, c2 = st.columns([3, 0.5])
 
@@ -123,17 +125,10 @@ def main():
                 st.subheader("Query Editor")
                 content = st_ace(
                     placeholder="--Select Database and Write your SQL Query Here!",
-                    # language=c2.selectbox("Language", options=LANGUAGES, index=145),
                     language= LANGUAGES[145],
                     theme=THEME,
                     keybinding=KEYBINDINGS[3],
                     font_size=c2.slider("Font Size", 10, 24, 16),
-                    # tab_size=c2.slider("Tab size", 1, 8, 4),
-                    # show_gutter=c2.checkbox("Show gutter", value=True),
-                    # show_print_margin=c2.checkbox("Show print margin", value=False),
-                    # wrap=c2.checkbox("Wrap enabled", value=False),
-                    # auto_update=c2.checkbox("Auto update", value=False),
-                    # readonly=c2.checkbox("Read-only", value=False),
                     min_lines=20,
                     key="run_query",
                 )
