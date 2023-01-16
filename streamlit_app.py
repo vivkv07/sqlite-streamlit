@@ -85,7 +85,7 @@ def main():
 
             except Exception as e:
                 st.write(e)
-    intro, db, tbl, qry = st.tabs(["1. Intro to SQL","2. Create Database", "3. Upload Data", "4. Query Data"])
+    intro, db, tbl, qry = st.tabs(["1 Intro to SQL","2 Create Database", "3 Upload Data", "4 Query Data"])
     with intro:
         st.write((Path(__file__).parent/"data/sql.md").read_text()) 
     with db:
