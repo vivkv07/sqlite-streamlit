@@ -129,7 +129,7 @@ def main():
                     theme=THEME,
                     keybinding=KEYBINDINGS[3],
                     font_size=c2.slider("Font Size", 10, 24, 16),
-                    min_lines=20,
+                    min_lines=15,
                     key="run_query",
                 )
 
