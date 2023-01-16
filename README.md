@@ -1,6 +1,8 @@
 # SQL Editor on Streamlit using SQLITE
 [![Streamlit](https://badgen.net/pypi/v/streamlit)](https://pypi.org/project/streamlit/)
-![Example of live coding an app in Streamlit|635x380](https://github.com/vivkv07/sqlite-streamlit/blob/main/data/sqlite_streamlit.gif?raw=true)
+
+
+![Example of live coding an app in Streamlit|835x480](https://github.com/vivkv07/sqlite-streamlit/blob/main/data/sqlite_streamlit.gif?raw=true)
 
 
 The above code is a Python script that uses the Streamlit library to create a web application for working with SQLite databases. The script uses the SQLite library to connect to the database and perform operations such as creating and uploading data to tables.
