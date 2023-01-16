@@ -5,10 +5,19 @@
 ![Example of live coding an app in Streamlit|835x480](https://github.com/vivkv07/sqlite-streamlit/blob/main/data/sqlite_streamlit.gif?raw=true)
 
 
-The above code is a Python script that uses the Streamlit library to create a web application for working with SQLite databases. The script uses the SQLite library to connect to the database and perform operations such as creating and uploading data to tables.
+Code is a Python script that uses the Streamlit library to create a web application for working with SQLite databases. The script uses the SQLite library to connect to the database and perform operations such as creating and uploading data to tables.
 
 The script starts by importing the necessary libraries including Streamlit, SQLite3, Pandas, and others.
-
+```python
+import streamlit as st
+import sqlite3
+import pandas as pd
+import os
+from streamlit_ace import st_ace, KEYBINDINGS, LANGUAGES, THEMES
+from readme import readme
+import  streamlit_toggle as tog
+from pathlib import Path
+```
 The first thing the script does is set the page layout, title, and icon of the web application using the st.set_page_config() function. It also sets the title of the page and the caption of the developer.
 
 The script then defines a main() function that contains several other functions. The first function is the create_connection() function, which creates a connection to the SQLite database specified by the 'db_file' parameter.
